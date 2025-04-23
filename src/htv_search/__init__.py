@@ -75,7 +75,7 @@ def htv_search():
     r = requests.post('https://search.htv-services.com/', json=req)
     r = r.json()
 
-    hits = json.loads(r['hits'])
+    hits = r.get('hits') if r else []
 
     if args.verbose:
         res_fmt = """---
