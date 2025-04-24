@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "hanime-tv-plugin"
-version = "2024.04.08"
+version = "2025.04.24"
 description = "hanime.tv extractor plugin for yt-dlp"
 authors = ["Cynthia <cynthia2048@proton.me>"]
 readme = "README.md"
