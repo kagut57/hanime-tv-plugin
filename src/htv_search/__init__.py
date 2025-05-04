@@ -77,6 +77,8 @@ def htv_search():
     r = json.loads(r)
     
     hits = r.get('hits') if r else []
+    
+    hits = json.loads(hits)
 
     if args.verbose:
         res_fmt = """---
