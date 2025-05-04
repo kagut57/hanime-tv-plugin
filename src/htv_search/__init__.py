@@ -105,7 +105,7 @@ def htv_search():
         res_fmt = "{name}: https://hanime.tv/hentai/video/{slug}"
 
     for hit in hits:
-        minutes, seconds = divmod(hit['duration_in_ms'], 60000)
+        minutes, seconds = divmod(int(hit['duration_in_ms']), 60000)
         hours, minutes = divmod(minutes, 60)
 
         if args.verbose:
