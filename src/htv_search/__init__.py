@@ -73,8 +73,9 @@ def htv_search():
     }
 
     r = requests.post('https://search.htv-services.com/', json=req)
-    r = r.json()
-
+    r = r.text
+    r = json.loads(r)
+    
     hits = r.get('hits') if r else []
 
     if args.verbose:
@@ -105,9 +106,12 @@ def htv_search():
         res_fmt = "{name}: https://hanime.tv/hentai/video/{slug}"
 
     for hit in hits:
+        minutes, seconds = divmod(int(hit['duration_in_ms']), 60000)
+        hours, minutes = divmod(minutes, 60)
 
         if args.verbose:
             hit.update({
+                'duration': '{0}:{1}:{2}'.format(hours, minutes, seconds),
                 'release_date': datetime.utcfromtimestamp(hit['released_at']),
                 'upload_date': datetime.utcfromtimestamp(hit['created_at']),
                 'titles': '\n        '.join(hit['titles']),
