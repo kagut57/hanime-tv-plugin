@@ -46,7 +46,7 @@ class HanimeTVIE(InfoExtractor):
                         continue
 
                     formats.append({
-                        'url': url_or_none(streams.get('url')),
+                        'url': url_or_none(streams.get('extra2')),
                         'ext': 'mp4',
                         'format_id': str_or_none(streams.get('id')),
                         'width': int_or_none(streams.get('width')),
